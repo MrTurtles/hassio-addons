@@ -1,0 +1,18 @@
+name: OmniRoute
+version: "1.0.1"
+slug: omniroute
+description: Self-hosted AI gateway - one endpoint for 350+ model providers
+url: "https://github.com/diegosouzapw/OmniRoute"
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+ports:
+  20128/tcp: 20128
+ports_description:
+  20128/tcp: OmniRoute dashboard / API
+options:
+  initial_password: "changeme"
+schema:
+  initial_password: str

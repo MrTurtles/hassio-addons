@@ -1,5 +1,5 @@
 name: OmniRoute
-version: "1.0.5"
+version: "1.0.6"
 slug: omniroute
 description: Self-hosted AI gateway - one endpoint for 350+ model providers
 url: "https://github.com/diegosouzapw/OmniRoute"

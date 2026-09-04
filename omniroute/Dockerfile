@@ -5,7 +5,5 @@ FROM $BUILD_FROM
 RUN apk add --no-cache nodejs npm \
     && npm install -g omniroute
 
-COPY run.sh /
-RUN chmod a+x /run.sh
-
-CMD [ "/run.sh" ]
+COPY run.sh /etc/services.d/omniroute/run
+RUN chmod a+x /etc/services.d/omniroute/run

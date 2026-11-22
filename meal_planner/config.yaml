@@ -1,0 +1,25 @@
+name: Maaltijdplanner
+version: 0.1.0
+slug: meal_planner
+description: Plan maaltijden, recepten en boodschappen vanuit Home Assistant.
+arch:
+  - amd64
+  - aarch64
+init: false
+startup: application
+boot: auto
+ingress: true
+ingress_port: 8099
+ingress_stream: true
+panel_icon: mdi:silverware-fork-knife
+panel_title: Maaltijdplanner
+panel_admin: false
+hassio_api: true
+hassio_role: default
+homeassistant_api: false
+discovery:
+  - meal_planner
+options:
+  log_level: info
+schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)

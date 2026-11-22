@@ -1,0 +1,16 @@
+#include <tunables/global>
+
+profile meal_planner flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+
+  file,
+  signal (send) set=(kill,term,int,hup,cont),
+
+  network inet stream,
+  network inet6 stream,
+  network inet dgram,
+  network inet6 dgram,
+
+  deny network raw,
+  deny mount,
+}

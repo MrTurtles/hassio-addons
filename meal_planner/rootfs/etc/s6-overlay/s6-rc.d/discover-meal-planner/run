@@ -1,0 +1,13 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+set -euo pipefail
+
+token="$(< /data/secrets/integration_token)"
+token="${token//$'\n'/}"
+config="$(bashio::var.json host "$(hostname)" port "^8098" token "${token}")"
+
+if bashio::discovery "meal_planner" "${config}" > /dev/null; then
+  bashio::log.info "Meal Planner gemeld bij Home Assistant"
+else
+  bashio::log.warning "Discovery mislukt. Ingress blijft beschikbaar."
+fi

@@ -1,4 +1,12 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
-mkdir -p /run/nginx
+mkdir -p /run/nginx \
+  /tmp/nginx/client_body \
+  /tmp/nginx/proxy \
+  /tmp/nginx/fastcgi \
+  /tmp/nginx/uwsgi \
+  /tmp/nginx/scgi \
+  /var/lib/nginx/logs \
+  /var/lib/nginx/tmp
+chmod -R 1777 /tmp/nginx /var/lib/nginx /run/nginx
 exec nginx -g "daemon off;"

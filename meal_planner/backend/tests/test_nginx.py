@@ -2,6 +2,7 @@ from pathlib import Path
 
 APP_ROOT = Path(__file__).resolve().parents[2]
 NGINX_CONF = APP_ROOT / "rootfs" / "etc" / "nginx" / "http.d" / "meal-planner.conf"
+NGINX_MAIN = APP_ROOT / "rootfs" / "etc" / "nginx" / "nginx.conf"
 INDEX_HTML = APP_ROOT / "frontend" / "index.html"
 
 
@@ -14,6 +15,9 @@ def test_nginx_separates_ingress_from_the_internal_api() -> None:
     assert 'proxy_set_header X-MealPlanner-Channel "ingress"' in config
     assert 'proxy_set_header X-MealPlanner-Channel "internal"' in config
     assert "proxy_pass http://127.0.0.1:8000" in config
+    main = NGINX_MAIN.read_text(encoding="utf-8")
+    assert "client_body_temp_path /tmp/nginx/client_body;" in main
+    assert "proxy_temp_path /tmp/nginx/proxy;" in main
 
 
 def test_frontend_keeps_the_ingress_placeholder() -> None:

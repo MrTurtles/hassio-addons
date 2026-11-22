@@ -1,5 +1,5 @@
 name: Maaltijdplanner
-version: 0.1.0
+version: 0.1.1
 slug: meal_planner
 description: Plan maaltijden, recepten en boodschappen vanuit Home Assistant.
 arch:
